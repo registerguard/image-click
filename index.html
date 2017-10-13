@@ -1,0 +1,61 @@
+<html>
+<head>
+<style>
+	html, body{
+		background-color: black;
+	}
+	#wrap{
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.hidden{
+		display: none;
+		visibility: hidden;
+	}
+	
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<!-- This button should go on first image -->
+		<button id="expand">Expand</button>
+		<!-- This button should position absolute to top -->
+		<button id="close" class="hidden">Close</button>
+		<!-- This image shows regardless, has expand button on it -->
+		<div>
+			<img src="img/00.jpg" />
+		</div>
+		<!-- These pics show if expand clicked, disappear when close clicked -->
+		<div id="pics" class="hidden">
+			<div>
+				<img src="img/01.jpg" />
+			</div>
+			<div>
+				<img src="img/02.jpg" />
+			</div>
+			<div>
+				<img src="img/03.jpg" />
+			</div>
+			<div>
+				<img src="img/04.jpg" />
+			</div>
+			<div>
+				<img src="img/05.jpg" />
+			</div>
+			<div>
+				<img src="img/06.jpg" />
+			</div>
+			<div>
+				<img src="img/07.jpg" />
+			</div>
+			<div>
+				<img src="img/08.jpg" />
+			</div>
+			<div>
+				<img src="img/09.jpg" />
+			</div>
+		</div>
+	</div>
+	<script src="click.js"></script>
+</body>
+</html>
