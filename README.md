@@ -7,11 +7,13 @@
 
 
 # TODO
-  - Add in progressive image loading
+  - [x] Add in progressive image loading
     - Questions:
       - How does prog work with display: none?
+        - Once loaded, they stay loaded
       - Will prog load the low-res before the images are expanded
-  - Style
+        - Low res versions are loaded on page load, this is ok (not great but whatevs)
+  - [ ] Style
     - Questions:
       - Can we absolute position the close button to top? Side? Bottom?
       - Can we disappear close after you scroll past the final image?

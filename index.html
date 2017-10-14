@@ -1,61 +1,125 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="prog.css" >
+<link rel="stylesheet" href="click.css" >
 <style>
-	html, body{
-		background-color: black;
-	}
 	#wrap{
 		max-width: 800px;
 		margin: 0 auto;
 	}
-	.hidden{
-		display: none;
-		visibility: hidden;
+	figure{
+		margin: 0;
 	}
-	
+	img{
+		width: 100%;
+	}
 </style>
 </head>
 <body>
 	<div id="wrap">
 		<!-- This button should go on first image -->
-		<button id="expand">Expand</button>
+		<button id="click-expand">Expand</button>
 		<!-- This button should position absolute to top -->
-		<button id="close" class="hidden">Close</button>
+		<button id="click-close" class="click-hidden">Close</button>
 		<!-- This image shows regardless, has expand button on it -->
 		<div>
-			<img src="img/00.jpg" />
+			<figure>
+				<img src="img/00.jpg" />
+				<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+			</figure>
 		</div>
+		
+		<hr>
 		<!-- These pics show if expand clicked, disappear when close clicked -->
-		<div id="pics" class="hidden">
+		<div id="click-pics" class="click-hidden">
 			<div>
-				<img src="img/01.jpg" />
+				<figure>
+					<a href="img/01.jpg" class="progressive replace">
+						<img src="img/thumb/01.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/02.jpg" />
+				<figure>
+					<a href="img/02.jpg" class="progressive replace">
+						<img src="img/thumb/02.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/03.jpg" />
+				<figure>
+					<a href="img/03.jpg" class="progressive replace">
+						<img src="img/thumb/03.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/04.jpg" />
+				<figure>
+					<a href="img/04.jpg" class="progressive replace">
+						<img src="img/thumb/04.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/05.jpg" />
+				<figure>
+					<a href="img/05.jpg" class="progressive replace">
+						<img src="img/thumb/05.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/06.jpg" />
+				<figure>
+					<a href="img/06.jpg" class="progressive replace">
+						<img src="img/thumb/06.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/07.jpg" />
+				<figure>
+					<a href="img/07.jpg" class="progressive replace">
+						<img src="img/thumb/07.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/08.jpg" />
+				<figure>
+					<a href="img/08.jpg" class="progressive replace">
+						<img src="img/thumb/08.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 			<div>
-				<img src="img/09.jpg" />
+				<figure>
+					<a href="img/09.jpg" class="progressive replace">
+						<img src="img/thumb/09.jpg" class="preview" alt="image" />
+					</a>
+					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
+				</figure>
 			</div>
+			<hr>
 		</div>
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 	</div>
+	<script src="prog.js"></script>
 	<script src="click.js"></script>
 </body>
 </html>
