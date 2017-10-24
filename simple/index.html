@@ -1,8 +1,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="prog/prog.css" >
-<link rel="stylesheet" href="click/click.css" >
+<link rel="stylesheet" href="../prog/prog.css" >
+<link rel="stylesheet" href="../click/click.css" >
 <style>
 	#wrap{
 		max-width: 800px;
@@ -17,18 +17,15 @@
 </style>
 </head>
 <body>
-	<!-- This button should position absolute to top -->
-	<button id="click-close" class="click-hidden">Close</button>
 	<div id="wrap">
-		
+		<!-- This button should go on first image -->
+		<button id="click-expand">Expand</button>
+		<!-- This button should position absolute to top -->
+		<button id="click-close" class="click-hidden">Close</button>
 		<!-- This image shows regardless, has expand button on it -->
 		<div>
 			<figure>
-				<div id="click-first-wrap">
-					<!-- This button should go on first image -->
-					<button id="click-expand">+</button>
-					<img src="img/00.jpg" />
-				</div><!-- /#click-first-wrap -->
+				<img src="../img/00.jpg" />
 				<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 			</figure>
 		</div>
@@ -38,8 +35,8 @@
 		<div id="click-pics" class="click-hidden">
 			<div>
 				<figure>
-					<a href="img/01.jpg" class="progressive replace">
-						<img src="img/thumb/01.jpg" class="preview" alt="image" />
+					<a href="../img/01.jpg" class="progressive replace">
+						<img src="../img/thumb/01.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -47,8 +44,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/02.jpg" class="progressive replace">
-						<img src="img/thumb/02.jpg" class="preview" alt="image" />
+					<a href="../img/02.jpg" class="progressive replace">
+						<img src="../img/thumb/02.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -56,8 +53,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/03.jpg" class="progressive replace">
-						<img src="img/thumb/03.jpg" class="preview" alt="image" />
+					<a href="../img/03.jpg" class="progressive replace">
+						<img src="../img/thumb/03.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -65,8 +62,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/04.jpg" class="progressive replace">
-						<img src="img/thumb/04.jpg" class="preview" alt="image" />
+					<a href="../img/04.jpg" class="progressive replace">
+						<img src="../img/thumb/04.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -74,8 +71,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/05.jpg" class="progressive replace">
-						<img src="img/thumb/05.jpg" class="preview" alt="image" />
+					<a href="../img/05.jpg" class="progressive replace">
+						<img src="../img/thumb/05.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -83,8 +80,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/06.jpg" class="progressive replace">
-						<img src="img/thumb/06.jpg" class="preview" alt="image" />
+					<a href="../img/06.jpg" class="progressive replace">
+						<img src="../img/thumb/06.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -92,8 +89,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/07.jpg" class="progressive replace">
-						<img src="img/thumb/07.jpg" class="preview" alt="image" />
+					<a href="../img/07.jpg" class="progressive replace">
+						<img src="../img/thumb/07.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -101,8 +98,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/08.jpg" class="progressive replace">
-						<img src="img/thumb/08.jpg" class="preview" alt="image" />
+					<a href="../img/08.jpg" class="progressive replace">
+						<img src="../img/thumb/08.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -110,8 +107,8 @@
 			<hr>
 			<div>
 				<figure>
-					<a href="img/09.jpg" class="progressive replace">
-						<img src="img/thumb/09.jpg" class="preview" alt="image" />
+					<a href="../img/09.jpg" class="progressive replace">
+						<img src="../img/thumb/09.jpg" class="preview" alt="image" />
 					</a>
 					<figcaption>Lorem ipsum solit dolor et netus et malesuada fames ac turpis egestas.</figcaption>
 				</figure>
@@ -122,7 +119,7 @@
 		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 	</div>
-	<script src="prog/prog.js"></script>
-	<script src="click/click.js"></script>
+	<script src="../prog/prog.js"></script>
+	<script src="../click/click.js"></script>
 </body>
 </html>
