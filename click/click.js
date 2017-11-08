@@ -10,7 +10,7 @@
 				close.classList.remove('click-hidden');
 				expand.classList.add('click-hidden');
 				
-				inView(); // Call prog
+				// inView(); // Call prog
 				
 				expanded = true;
 			} else {
