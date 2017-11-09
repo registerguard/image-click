@@ -12,6 +12,13 @@
 				
 				// inView(); // Call prog
 				
+				var kids = pics.getElementsByTagName("figure");
+				var lastFig = kids[kids.length-1];
+				var lastRect = lastFig.getBoundingClientRect();
+				lastTop = lastRect.top;
+				var lastHeight = lastRect.height;
+				lastBottom = lastTop + lastHeight;
+
 				expanded = true;
 			} else {
 				// Open, so close
@@ -21,15 +28,29 @@
 				expanded = false;
 			}
 		}
+
+		function removeButton(){
+			console.log('SCROLOLOLOLOLOLOLOLING');
+			var wT = window.pageYOffset,
+			wB = wT + window.innerHeight;
+			if (lastBottom < wT){
+				close.classList.add('click-hidden');
+			} else if (lastBottom > wT && close.classList.contains('click-hidden')){
+				close.classList.remove('click-hidden');
+			}
+
+		}
 		
 		// Set vars
 		var expanded = false; // Boolean check for expanding/closing
 		var pics = document.getElementById('click-pics'); // These are the additional pics
 		var expand = document.getElementById('click-expand'); // This is the expand button
 		var close = document.getElementById('click-close'); // This is the button to close 
-		
+		var lastTop, lastBottom;
+
 		expand.addEventListener('click', showhide); // Open
 		close.addEventListener('click', showhide);  // Close
+		window.addEventListener('scroll', removeButton, false);
 		
 // 	}, false);
 // }
