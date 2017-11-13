@@ -4,13 +4,12 @@
 		
 		// Common function to show/hide pics
 		function showhide(){
+
+			pics.classList.toggle('click-hidden');
+			close.classList.toggle('click-hidden');
+			expand.classList.toggle('click-hidden');
+
 			if (expanded === false){
-				// Closed, so expand
-				pics.classList.remove('click-hidden');
-				close.classList.remove('click-hidden');
-				expand.classList.add('click-hidden');
-				
-				// inView(); // Call prog
 				
 				var kids = pics.getElementsByTagName("figure");
 				var lastFig = kids[kids.length-1];
@@ -21,24 +20,31 @@
 
 				expanded = true;
 			} else {
-				// Open, so close
-				pics.classList.add('click-hidden');
-				close.classList.add('click-hidden');
-				expand.classList.remove('click-hidden');
 				expanded = false;
 			}
 		}
 
-		function removeButton(){
-			console.log('SCROLOLOLOLOLOLOLOLING');
-			var wT = window.pageYOffset,
-			wB = wT + window.innerHeight;
-			if (lastBottom < wT){
-				close.classList.add('click-hidden');
-			} else if (lastBottom > wT && close.classList.contains('click-hidden')){
-				close.classList.remove('click-hidden');
+		function closeButton(){
+			if (expanded === true){
+				// Get half the window height
+				var windowHalf = window.pageYOffset + (window.innerHeight / 2);
+				if (lastBottom < windowHalf){
+					// if the bottom of the last image is less than (above) half the window
+					close.classList.add('click-hidden');
+				} else if (lastBottom > windowHalf){
+					// if the bottom of the last image is greater than (below) half the window
+					close.classList.remove('click-hidden');
+				}
 			}
+		}
 
+		// throttled scroll/resize
+		// Code borrowed from prog
+		function scrolling() {
+			var timer = timer || setTimeout(function() {
+				timer = null;
+				window.requestAnimationFrame(closeButton);
+			}, 300);
 		}
 		
 		// Set vars
@@ -50,7 +56,7 @@
 
 		expand.addEventListener('click', showhide); // Open
 		close.addEventListener('click', showhide);  // Close
-		window.addEventListener('scroll', removeButton, false);
+		window.addEventListener('scroll', scrolling);
 		
 // 	}, false);
 // }
