@@ -12,18 +12,14 @@ function showhide(){
 		lastTop = lastRect.top;
 		var lastHeight = lastRect.height;
 		lastBottom = lastTop + lastHeight;
-		// Bad, terrible, awful hack to trigger prog
-		//window.scroll(0, window.pageYOffset - 1);
-		//window.scroll(0, window.pageYOffset + 1);
-
 		expanded = true;
 	} else {
 		window.scroll(0, first.offsetTop);
-
 		expanded = false;
 	}
 }
 
+// Function disappears close button if the bottom of the last image has reached half the page height, will reappear if scrolled back up
 function closeButton(){
 	if (expanded === true){
 		// Get half the window height
@@ -38,7 +34,7 @@ function closeButton(){
 	}
 }
 
-// throttled scroll/resize
+// Throttled scroll/resize
 // Code borrowed from prog
 function scrolling() {
 	var timer = timer || setTimeout(function() {
@@ -57,4 +53,4 @@ var lastTop, lastBottom;
 
 expand.addEventListener('click', showhide); // Open
 close.addEventListener('click', showhide);  // Close
-window.addEventListener('scroll', scrolling);
+window.addEventListener('scroll', scrolling); // Call scroller
