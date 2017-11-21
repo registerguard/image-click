@@ -109,6 +109,45 @@ Modified by Rob Denton/The Register-Guard
 					else { p++; }
 				}
 			}
+
+			// Click functions moved out of conditional
+			// See: https://stackoverflow.com/a/26768233
+			// Common function to show/hide pics
+			function showhide(){
+				pics.classList.toggle('click-hidden');
+				close.classList.toggle('click-hidden');
+				expand.classList.toggle('click-hidden');
+			
+				if (expanded === false){
+					var kids = pics.getElementsByTagName("figure");
+					var lastFig = kids[kids.length-1];
+					var lastRect = lastFig.getBoundingClientRect();
+					lastTop = lastRect.top;
+					var lastHeight = lastRect.height;
+					lastBottom = lastTop + lastHeight;
+					expanded = true;
+					inView();
+				} else {
+					window.scroll(0, firstPic.offsetTop);
+					expanded = false;
+				}
+			}
+			
+			// Function disappears close button if the bottom of the last image has reached half the page height, will reappear if scrolled back up
+			function closeButton(){
+				if (expanded === true){
+					// Get half the window height
+					var windowHalf = window.pageYOffset + (window.innerHeight / 2);
+					if (lastBottom < windowHalf){
+						// if the bottom of the last image is less than (above) half the window
+						close.classList.add('click-hidden');
+					} else if (lastBottom > windowHalf){
+						// if the bottom of the last image is greater than (below) half the window
+						close.classList.remove('click-hidden');
+					}
+				}
+			}
+
 			// throttled scroll/resize
 			function scroller() {
 				timer = timer || setTimeout(function() {
@@ -127,44 +166,9 @@ Modified by Rob Denton/The Register-Guard
 			// Story page
 			if (document.getElementById('click-expand')){
 
-				// Common function to show/hide pics
-				function showhide(){
-					pics.classList.toggle('click-hidden');
-					close.classList.toggle('click-hidden');
-					expand.classList.toggle('click-hidden');
-				
-					if (expanded === false){
-						var kids = pics.getElementsByTagName("figure");
-						var lastFig = kids[kids.length-1];
-						var lastRect = lastFig.getBoundingClientRect();
-						lastTop = lastRect.top;
-						var lastHeight = lastRect.height;
-						lastBottom = lastTop + lastHeight;
-						expanded = true;
-						inView();
-					} else {
-						window.scroll(0, first.offsetTop);
-						expanded = false;
-					}
-				}
-				
-				// Function disappears close button if the bottom of the last image has reached half the page height, will reappear if scrolled back up
-				function closeButton(){
-					if (expanded === true){
-						// Get half the window height
-						var windowHalf = window.pageYOffset + (window.innerHeight / 2);
-						if (lastBottom < windowHalf){
-							// if the bottom of the last image is less than (above) half the window
-							close.classList.add('click-hidden');
-						} else if (lastBottom > windowHalf){
-							// if the bottom of the last image is greater than (below) half the window
-							close.classList.remove('click-hidden');
-						}
-					}
-				}
 				// Set vars
 				var expanded = false; // Boolean check for expanding/closing
-				var first = document.getElementById('click-first'); // First image, outside click-pics
+				var firstPic = document.getElementById('click-first'); // First image, outside click-pics
 				var pics = document.getElementById('click-pics'); // These are the additional pics
 				var expand = document.getElementById('click-expand'); // This is the expand button
 				var close = document.getElementById('click-close'); // This is the button to close 

@@ -1,3 +1,25 @@
+Image-click uses [progressive image loading technology](https://github.com/registerguard/progressive-image.js) to lazy load images in a number of different ways on registerguard.com. This repo is for testing and it will be built into Bulldog eventually.
+
+There might be single imgaes on a story page and multiple images on a story page and gallery page. These images can be called from DT or SSP.
+
+Gulp is being used as a build tool to leverage mustache templating and browser-sync.
+
+# Getting started
+
+```
+# Clone repo 
+git clone https://github.com/registerguard/image-click.git
+
+# Install yarn if you don't have it (would also work with npm)
+brew install yarn
+
+# Install dev dependencies
+yarn || npm install
+
+# Start gulp server
+gulp serve
+```
+
 ### Testing for a click-to-expand image user interface.
 
 # Basic plan:

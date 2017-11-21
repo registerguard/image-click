@@ -1,0 +1,21 @@
+{
+  "name": "image-click",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/registerguard/image-click.git",
+  "author": "Rob Denton/The Register-Guard",
+  "license": "MIT",
+  "scripts": {
+    "//": "See: https://www.browsersync.io/docs/command-line",
+    "stache": "mustache -p assets/partials/dtmult.mustache -p assets/partials/single.mustache package.json assets/index.html > index.html",
+    "serve": "browser-sync start -s -f assets",
+    "run": "yarn stache yarn serve"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-mustache": "^3.0.0",
+    "jshint": "^2.9.5"
+  }
+}
