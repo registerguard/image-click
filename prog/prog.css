@@ -1,43 +1,116 @@
-/* progressive image CSS */
-a.progressive {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  outline: none;
+/*
+MIT License
+Copyright (c) 2017 Craig Buckler
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+Modified by Rob Denton/The Register-Guard
+*/
+
+/* Click */
+.click-hidden{
+	display: none;
+	visibility: hidden;
 }
 
-a.progressive:not(.replace) {
-  cursor: default;
+#click-close{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: black;
+	color: white;
+  border: none;
+  border-radius: 0;
+	z-index: 9999;
+}
+#click-close:hover,
+#click-close:active{
+	cursor: pointer;
 }
 
-a.progressive img {
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  border: 0 none;
+#click-first-wrap{
+	position: relative;
 }
 
-a.progressive img.preview {
-  -webkit-filter: blur(2vw);
-  filter: blur(2vw);
+#click-expand{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	background: black;
+	color: white;
+	font-size: 36px;
+	line-height: 36px;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
 }
 
-a.progressive img.reveal {
-  position: absolute;
-  left: 0;
-  top: 0;
-  will-change: opacity;
-  -webkit-animation: reveal 1s ease-out;
-  animation: reveal 1s ease-out;
+#click-expand:hover,
+#click-expand:active{
+	cursor: pointer;
 }
 
-@-webkit-keyframes reveal {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
-}
+/* .prog{ */
+	
+	/* progressive image CSS */
+	.prog a.progressive {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		outline: none;
+	}
 
-@keyframes reveal {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
-}
+	.prog a.progressive:not(.replace) {
+		cursor: default;
+	}
+
+	.prog a.progressive img {
+		display: block;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		border: 0 none;
+	}
+
+	.prog a.progressive img.preview {
+		-webkit-filter: blur(2vw);
+		filter: blur(2vw);
+	}
+
+	.prog a.progressive img.reveal {
+		position: absolute;
+		left: 0;
+		top: 0;
+		will-change: opacity;
+		-webkit-animation: reveal 1s ease-out;
+		animation: reveal 1s ease-out;
+	}
+
+	@-webkit-keyframes reveal {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+
+	@keyframes reveal {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+/* } */

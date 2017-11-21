@@ -49,93 +49,138 @@ Modified by Rob Denton/The Register-Guard
 			}
 		}
 	}
-
-	// replace with full image
-	function loadFullImage(item) {
-		// replace image
-		function addImg() {
-			// disable click
-			item.addEventListener('click', function(e) { e.preventDefault(); }, false);
-			// add full image
-			item.appendChild(img).addEventListener('animationend', function(e) {
-				// remove preview image
-				var pImg = item.querySelector && item.querySelector('img.preview');
-				if (pImg) {
-					e.target.alt = pImg.alt || '';
-					item.removeChild(pImg);
-					e.target.classList.remove('reveal');
-				}
-			});
-		}
-		// Do stuff
-		if (!item || !item.href) { return; }
-		// load image
-		var img = new Image();
-		if (item.dataset) {
-			img.srcset = item.dataset.srcset || '';
-			img.sizes = item.dataset.sizes || '';
-			img.dataset.pct = item.dataset.pct || '';
-		}
-		img.src = item.href;
-		img.className = 'reveal';
-		if (img.complete) { addImg(); }
-		else { img.onload = addImg; }
-		if (loadFullImage.first == false){ 
-			// If it's already been called then send true, true
-			sendGA(img.dataset.pct,true,true); 
-		} else { 
-			// Otherwise, if this is the first call, send false, true
-			sendGA(img.dataset.pct,false,true);
-		}
-		// Set first to false after first pass through
-		loadFullImage.first = false;
-		//sendGA(img.pct);
-	}
-	// image in view?
-	function inView() {
-		var pItem = document.getElementsByClassName('progressive replace');
-		//var wT = window.pageYOffset, wB = wT + window.innerHeight, cRect, pT, pB, p = 0;
-		var wT = window.pageYOffset,
-		// Add 600 to bottom to load images before they're scrolled to.
-		wB = wT + window.innerHeight + 600,
-		cRect, pT, pB, p = 0;
-		while (p < pItem.length) {
-			cRect = pItem[p].getBoundingClientRect();
-			pT = wT + cRect.top;
-			pB = pT + cRect.height;
-			if (wT < pB && wB > pT) {
-				loadFullImage(pItem[p]);
-				pItem[p].classList.remove('replace');
-			}
-			else { p++; }
-		}
-	}
-	// throttled scroll/resize
-	function scroller() {
-		var timer = timer || setTimeout(function() {
-			timer = null;
-			window.requestAnimationFrame(inView);
-		}, 300);
-	}
-
-	function init(){
-		// start
-		window.addEventListener('scroll', scroller, false);
-		window.addEventListener('resize', scroller, false);
-		inView();
-	}
 	
 	// progressive-image.js
 	if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) {
 		window.addEventListener('load', function() {
-	
-			init();
+			// replace with full image
+			function loadFullImage(item,first) {
+				// replace image
+				function addImg() {
+					// disable click
+					item.addEventListener('click', function(e) { e.preventDefault(); }, false);
+					// add full image
+					item.appendChild(img).addEventListener('animationend', function(e) {
+						// remove preview image
+						var pImg = item.querySelector && item.querySelector('img.preview');
+						if (pImg) {
+							e.target.alt = pImg.alt || '';
+							item.removeChild(pImg);
+							e.target.classList.remove('reveal');
+						}
+					});
+				}
+				// Do stuff
+				if (!item || !item.href) { return; }
+				// load image
+				var img = new Image();
+				if (item.dataset) {
+					img.srcset = item.dataset.srcset || '';
+					img.sizes = item.dataset.sizes || '';
+					img.dataset.pct = item.dataset.pct || '';
+				}
+				img.src = item.href;
+				img.className = 'reveal';
+				if (img.complete) { addImg(); }
+				else { img.onload = addImg; }
+				if (first == true){ 
+					sendGA(img.dataset.pct,false,true); 
+				} else { 
+					sendGA(img.dataset.pct,true,true);
+				}
+				//sendGA(img.pct);
+			}
+			// image in view?
+			function inView() {
+				//var wT = window.pageYOffset, wB = wT + window.innerHeight, cRect, pT, pB, p = 0;
+				var wT = window.pageYOffset,
+				// Add 600 to bottom to load images before they're scrolled to.
+				wB = wT + window.innerHeight + 600,
+				cRect, pT, pB, p = 0;
+				while (p < pItem.length) {
+					cRect = pItem[p].getBoundingClientRect();
+					pT = wT + cRect.top;
+					pB = pT + cRect.height;
+					if (wT < pB && wB > pT) {
+						loadFullImage(pItem[p], first);
+						first = false;
+						pItem[p].classList.remove('replace');
+					}
+					else { p++; }
+				}
+			}
+			// throttled scroll/resize
+			function scroller() {
+				timer = timer || setTimeout(function() {
+					timer = null;
+					window.requestAnimationFrame(inView);
+				}, 300);
+			}
+			// start
+			var pItem = document.getElementsByClassName('progressive replace'), 
+			timer,
+			first = true;
+			window.addEventListener('scroll', scroller, false);
+			window.addEventListener('resize', scroller, false);
+			inView();
 
-			if (document.getElementById('click-expand')) {
-				document.getElementById('click-expand')
-					.addEventListener('click', inView);
+			// Story page
+			if (document.getElementById('click-expand')){
+
+				// Common function to show/hide pics
+				function showhide(){
+					pics.classList.toggle('click-hidden');
+					close.classList.toggle('click-hidden');
+					expand.classList.toggle('click-hidden');
+				
+					if (expanded === false){
+						var kids = pics.getElementsByTagName("figure");
+						var lastFig = kids[kids.length-1];
+						var lastRect = lastFig.getBoundingClientRect();
+						lastTop = lastRect.top;
+						var lastHeight = lastRect.height;
+						lastBottom = lastTop + lastHeight;
+						expanded = true;
+						inView();
+					} else {
+						window.scroll(0, first.offsetTop);
+						expanded = false;
+					}
+				}
+				
+				// Function disappears close button if the bottom of the last image has reached half the page height, will reappear if scrolled back up
+				function closeButton(){
+					if (expanded === true){
+						// Get half the window height
+						var windowHalf = window.pageYOffset + (window.innerHeight / 2);
+						if (lastBottom < windowHalf){
+							// if the bottom of the last image is less than (above) half the window
+							close.classList.add('click-hidden');
+						} else if (lastBottom > windowHalf){
+							// if the bottom of the last image is greater than (below) half the window
+							close.classList.remove('click-hidden');
+						}
+					}
+				}
+				// Set vars
+				var expanded = false; // Boolean check for expanding/closing
+				var first = document.getElementById('click-first'); // First image, outside click-pics
+				var pics = document.getElementById('click-pics'); // These are the additional pics
+				var expand = document.getElementById('click-expand'); // This is the expand button
+				var close = document.getElementById('click-close'); // This is the button to close 
+				var lastTop, lastBottom;
+				
+				expand.addEventListener('click', showhide); // Open
+				close.addEventListener('click', showhide);  // Close
+				window.addEventListener('scroll', scroller); // Call scroller
+
+				expand.classList.remove('click-hidden');
+
 			}
 
 		}, false);
 	}
+
+	
+	
 // }(jQuery, window, document));
