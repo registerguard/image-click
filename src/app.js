@@ -128,7 +128,7 @@ Modified by Rob Denton/The Register-Guard
 					expanded = true;
 					inView();
 				} else {
-					window.scroll(0, firstPic.offsetTop);
+					window.scroll(0, firstPic.offsetTop + firstPic.offsetHeight);
 					expanded = false;
 				}
 			}
