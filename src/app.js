@@ -50,6 +50,17 @@ Modified by Rob Denton/The Register-Guard
 		}
 	}
 	
+	function progSSP(){
+		var svg = document.getElementById('click-ssp-svg');
+		
+		// Need to do some functions to get API and loop over to write HTML
+		
+		// Swap ID
+		//svg.id = 'click-ssp-prog';
+
+
+	}
+
 	// progressive-image.js
 	if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) {
 		window.addEventListener('load', function() {
